@@ -30,36 +30,18 @@
     line-height: 1.6;
   }
   
-  .photo-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 20px 0;
-  }
-  
-  .photo-gallery img {
+  .anniversary-video {
     width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    animation: fadeIn 3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
   .footer {
     margin-top: 20px;
     font-style: italic;
     font-size: 0.9em;
-  }
-  
-  @media(min-width: 600px) {
-    .photo-gallery {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  
-    .photo-gallery img {
-      width: 45%;
-    }
   }
   
   @keyframes fadeIn {
