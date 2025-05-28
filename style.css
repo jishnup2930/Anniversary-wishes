@@ -1,51 +1,172 @@
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+  overflow-x: hidden;
+  color: #5a1a3b;
+  text-align: center;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.4em;
+  animation: fadeInDown 1.5s ease forwards;
+}
+
+p.message {
+  font-size: 1.2rem;
+  margin-bottom: 2em;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.photo-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 3em;
+  animation: fadeIn 2s ease forwards;
+}
+
+.photo-gallery img {
+  width: 30%;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+.footer {
+  font-style: italic;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+/* Balloon shapes */
+.balloon {
+  position: fixed;
+  bottom: -150px;
+  width: 50px;
+  height: 70px;
+  background: radial-gradient(circle at 20% 30%, #ff4d6d, #b72344);
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  box-shadow:
+    inset -10px -5px 20px rgba(255,255,255,0.4),
+    0 8px 10px rgba(0,0,0,0.1);
+  animation: floatUp ease-in-out infinite;
+}
+/* Balloon string */
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: #b72344;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Different balloons */
+.balloon:nth-child(1) {
+  left: 15%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+  background: radial-gradient(circle at 20% 30%, #ff4d6d, #b72344);
+}
+.balloon:nth-child(2) {
+  left: 40%;
+  animation-duration: 10s;
+  animation-delay: 2s;
+  background: radial-gradient(circle at 30% 40%, #6f9bff, #3056d3);
+}
+.balloon:nth-child(3) {
+  left: 70%;
+  animation-duration: 9s;
+  animation-delay: 1s;
+  background: radial-gradient(circle at 30% 30%, #ffbc4d, #b57c0f);
+}
+.balloon:nth-child(4) {
+  left: 85%;
+  animation-duration: 11s;
+  animation-delay: 3s;
+  background: radial-gradient(circle at 25% 30%, #ff73ff, #ad2999);
+}
+
+/* Balloon floating animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
   }
-  
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #ffe0e9, #fff6f0);
-    color: #333;
-    padding: 20px;
-    text-align: center;
+  50% {
+    transform: translateY(-90vh) scale(1.07);
+    opacity: 1;
   }
-  
-  .container {
-    max-width: 600px;
-    margin: auto;
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
   }
-  
-  h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: #c94f7c;
-    animation: fadeIn 2s ease-in-out;
+}
+
+/* Fade animations */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  .message {
-    font-size: 1.2em;
-    margin: 20px 0;
-    line-height: 1.6;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .anniversary-video {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .footer {
-    margin-top: 20px;
-    font-style: italic;
-    font-size: 0.9em;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .photo-gallery {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .photo-gallery img {
+    width: 80%;
+  }
+}
